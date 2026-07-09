@@ -427,55 +427,48 @@
     color:rgba(247,245,240,0.72);
     margin-top:16px;
   }
-  form.signup-form{
+  .signup-panel{
+    background:var(--steel);
+    border:1px solid var(--line-dark);
+    border-radius:14px;
+    padding:26px;
     display:flex;
     flex-direction:column;
     gap:16px;
   }
-  .field label{
-    display:block;
-    font-size:0.8rem;
-    color:rgba(247,245,240,0.55);
-    margin-bottom:8px;
+  .signup-panel-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-size:0.85rem;
+    padding-bottom:16px;
+    border-bottom:1px solid var(--line-dark);
   }
-  .field input, .field select{
-    width:100%;
-    background:var(--steel);
-    border:1px solid var(--line-dark);
-    color:var(--cream);
-    padding:13px 16px;
-    border-radius:10px;
-    font-size:0.95rem;
-    font-family:inherit;
-  }
-  .field select{appearance:none;}
-  .field input:focus, .field select:focus{
-    border-color:var(--mono-green);
-  }
+  .signup-panel-row .readout-label{margin-bottom:0;}
+  .signup-panel-row .mono{color:rgba(247,245,240,0.8); font-size:0.85rem;}
   .signup-submit{
-    margin-top:6px;
+    margin-top:4px;
     background:var(--cream);
     color:var(--ink);
     border:none;
-    padding:15px 20px;
+    padding:16px 20px;
     border-radius:10px;
     font-weight:600;
     font-size:0.95rem;
-    transition:background .2s ease;
+    transition:background .2s ease, transform .2s ease;
   }
-  .signup-submit:hover{background:var(--citrus);}
-  .form-success{
-    display:none;
-    padding:18px;
-    border-radius:10px;
-    background:rgba(159,232,112,0.1);
-    border:1px solid rgba(159,232,112,0.35);
-    color:var(--mono-green);
-    font-size:0.92rem;
-    line-height:1.5;
+  .signup-link{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
   }
-  .form-success.show{display:block;}
-  form.signup-form.hide{display:none;}
+  .signup-submit:hover{background:var(--citrus); transform:translateY(-1px);}
+  .signup-hint{
+    text-align:center;
+    font-size:0.78rem;
+    color:rgba(247,245,240,0.4);
+  }
 
   /* ---------- FOOTER ---------- */
   footer{
@@ -682,27 +675,31 @@
         <p style="opacity:1; font-size:1.05rem; color:var(--cream);">We're testing with a small number of pilot partners before this goes anywhere wider. No orders, no payment — just tell us who you are and where you'd want one.</p>
         <p>We'll reach out directly as pilot spots open, and we'll tell you honestly if that's not for a while.</p>
       </div>
-      <div>
-        <form class="signup-form" id="signupForm">
-          <div class="field">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" required placeholder="you@example.com">
-          </div>
-          <div class="field">
-            <label for="context">Where would you use it?</label>
-            <select id="context" name="context">
-              <option value="home">Home</option>
-              <option value="office">Office</option>
-              <option value="campus">Campus / school</option>
-              <option value="event">Events / pop-ups</option>
-              <option value="other">Something else</option>
-            </select>
-          </div>
-          <button type="submit" class="signup-submit">Get on the list</button>
-        </form>
-        <div class="form-success" id="formSuccess">
-          You're on the list. We'll email you directly when a pilot opens near you — no spam in the meantime.
+      <div class="signup-panel">
+        <div class="signup-panel-row">
+          <span class="readout-label">Time</span>
+          <span class="mono">~1 minute</span>
         </div>
+        <div class="signup-panel-row">
+          <span class="readout-label">Asks for</span>
+          <span class="mono">Email, location, use case</span>
+        </div>
+        <div class="signup-panel-row">
+          <span class="readout-label">Commitment</span>
+          <span class="mono">None — just a list</span>
+        </div>
+        <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSc2ONmrdOSfjh8qcoyJJpXpDdM9-ne57xIy3y_3EVQw9smJTw/viewform?usp=header"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="signup-submit signup-link"
+        >
+          Open the pilot list form
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M4 12L12 4M12 4H5.5M12 4V10.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <span class="signup-hint">Opens in a new tab, hosted on Google Forms.</span>
       </div>
     </div>
   </div>
@@ -744,14 +741,6 @@
     });
   }
 
-  // Fake success state for signup (no backend attached)
-  const form = document.getElementById('signupForm');
-  const success = document.getElementById('formSuccess');
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    form.classList.add('hide');
-    success.classList.add('show');
-  });
 </script>
 
 </body>
