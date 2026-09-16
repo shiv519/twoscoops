@@ -553,6 +553,17 @@
   }
   .summary-line strong{color:var(--mono-green); font-weight:600;}
   .summary-note{font-size:0.78rem; line-height:1.5; color:rgba(247,245,240,0.55); margin-top:4px;}
+  
+  .feature-unavailable{
+    background:rgba(226, 62, 99, 0.1);
+    border:1px solid rgba(226, 62, 99, 0.3);
+    border-radius:10px;
+    padding:12px 14px;
+    font-size:0.78rem;
+    color:rgba(247,245,240,0.7);
+    text-align:center;
+    margin-top:12px;
+  }
 
   .deployment-grid{
     margin-top:40px;
@@ -670,7 +681,7 @@
         <button class="btn-primary" onclick="document.getElementById('signup').scrollIntoView({behavior:'smooth'})">
           Get early access →
         </button>
-        <span class="hero-note">First units placing with pilot partners this year.</span>
+        <span class="hero-note">First units rolling out this year.</span>
       </div>
     </div>
     <div class="hero-side">
@@ -708,8 +719,8 @@
     <div class="customizer-card" style="margin-top:28px;">
       <div class="kicker" style="margin-bottom:8px">Why it feels different</div>
       <h3 style="font-size:1.18rem; font-weight:700;">Freshly churned gelato is smoother because it is made at the moment of service.</h3>
-      <p style="margin-top:12px; line-height:1.7; color:rgba(20,22,23,0.78);">Freshly churned gelato develops a finer, silkier texture because it is frozen while moving, which limits large ice crystals and keeps the body creamy and soft. That means the gelato can taste richer and more vivid without needing chemical stabilizers just to hold its form.</p>
-      <p style="margin-top:12px; line-height:1.7; color:rgba(20,22,23,0.78);">Serving it in a copper cup also adds clear benefits over paper: copper feels more premium, stays cooler for longer, and helps turn each order into a memorable experience instead of a disposable one.</p>
+      <p style="margin-top:12px; line-height:1.7; color:rgba(20,22,23,0.78);">Freshly churned gelato develops a finer, silkier texture because it is frozen while moving, which limits large ice crystal[...]
+      <p style="margin-top:12px; line-height:1.7; color:rgba(20,22,23,0.78);">Serving it in a copper cup also adds clear benefits over paper: copper feels more premium, stays cooler for longer, and he[...]
     </div>
     <div class="customizer-card">
       <div class="customizer-head">
@@ -749,6 +760,7 @@
           <div class="summary-line"><span>Mix-ins</span><strong>None</strong></div>
           <div class="summary-line"><span>Toppings</span><strong>None</strong></div>
           <div class="summary-note">Press Start, then pick the scoop count, sweetener, flavour, mix-ins and toppings. The machine churns the gelato live and dispenses it in a copper cup.</div>
+          <div class="feature-unavailable" id="featureWarning" style="display:none;">This feature isn't working yet — it's a preview only.</div>
         </div>
       </div>
     </div>
@@ -784,7 +796,7 @@
         </div>
       </div>
       <div class="panel-foot mono">
-        NOTE — Slot count, blend time, and rinse behavior are actively being tuned. Pilot partners get whichever build is current when their unit ships.
+        NOTE — Slot count, blend time, and rinse behavior are actively being tuned. Updates roll out as improvements are tested.
       </div>
     </div>
   </div>
@@ -798,12 +810,12 @@
     <div class="deployment-grid">
       <div class="deployment-card">
         <h3>Our own TwoScoops stores</h3>
-        <p><strong>Current locations:</strong> BITS Pilani Rajasthan</p>
-        <p><strong>Upcoming locations:</strong> Bangalore, Bhubaneshwar</p>
+        <p><strong>Current locations:</strong> None yet</p>
+        <p><strong>Upcoming locations:</strong> BITS Pilani Rajasthan, Bangalore, Bhubaneshwar</p>
       </div>
       <div class="deployment-card">
         <h3>By selling our machines</h3>
-        <p>We also sell our machines and handle upgrades, updates and maintenance for other companies and businesses. Any companies that are interested are requested to fill this form and email us at <a href="mailto:twoscoops.officialbusiness@gmail.com">twoscoops.officialbusiness@gmail.com</a>.</p>
+        <p>We also sell our machines and handle upgrades, updates and maintenance for other companies and businesses. Any companies that are interested are requested to fill this form and email u[...]
       </div>
     </div>
     <div class="cases-grid" style="margin-top:28px;">
@@ -837,8 +849,8 @@
     <h2 class="section-heading">Two Scoop is a prototype right now.</h2>
     <div class="signup-box">
       <div class="signup-copy">
-        <p style="opacity:1; font-size:1.05rem; color:var(--cream);">We're testing with a small number of pilot partners before this goes anywhere wider. No orders, no payment — just tell us who you are and where you'd want one.</p>
-        <p>We'll reach out directly as pilot spots open, and we'll tell you honestly if that's not for a while.</p>
+        <p style="opacity:1; font-size:1.05rem; color:var(--cream);">We're working with a small number of partners and interested builders before this goes anywhere wider. No orders, no payment — just tell us wh[...]
+        <p>We'll reach out directly as opportunities open up, and we'll tell you honestly if that's not for a while.</p>
       </div>
       <div class="signup-panel">
         <div class="signup-panel-row">
@@ -955,5 +967,10 @@
 
   document.getElementById('startCustomizer').addEventListener('click', () => {
     const summary = document.getElementById('customizerSummary');
+    const warning = document.getElementById('featureWarning');
+    warning.style.display = 'block';
     summary.scrollIntoView({ behavior: 'smooth', block: 'center' });
   });
+</script>
+</body>
+</html>
